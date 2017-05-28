@@ -1,3 +1,12 @@
 node_modules
 platforms
 plugins
+$ cat .gitignore
+
+# Can ignore specific files
+.gitignore
+
+# Can also ignore all directories and files in a directory.
+node_modules/**/* 
+platforms/**/* 
+plugins/**/* 

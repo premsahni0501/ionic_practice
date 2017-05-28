@@ -1,24 +1,47 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, ModalController, NavParams,ViewController } from 'ionic-angular';
 
-/**
- * Generated class for the Contacts page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html',
 })
 export class Contacts {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  params: Object
+  selectedContacts = []
+  contactList = [
+    "Prem",
+    "Chand",
+    "Sugriva",
+    "Prasad",
+    "Hari narayan",
+    "Katwaru",
+    "Mallah"
+  ]
+  constructor(
+    public modalCtrl: ModalController, 
+    public navParams: NavParams,
+    public nav: NavController,
+    private viewCtrl: ViewController
+    ) 
+  {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Contacts');
+  selectContact(contact){
+    var index = this.selectedContacts.indexOf(contact,0)
+    if(index > -1){
+      this.selectedContacts.splice(index,1);
+      console.log("remove")
+    }
+    else{
+      this.selectedContacts.push(contact)
+      console.log("add")
+    }
+    this.navParams.data = this.selectedContacts
+    console.log("B4:"+this.selectedContacts.length);
+  }
+  dismissModal(){
+    let data = { 'foo': 'bar' };
+    this.viewCtrl.dismiss(this.selectedContacts);
   }
 
 }

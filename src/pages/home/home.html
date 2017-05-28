@@ -4,32 +4,13 @@
       Segments
     </ion-title>
   </ion-navbar>
-
-  <ion-toolbar no-border-top>
-    <ion-segment [(ngModel)]="pet">
-      <ion-segment-button value="puppies">
-        Puppies
-      </ion-segment-button>
-      <ion-segment-button value="kittens">
-        Kittens
-      </ion-segment-button>
-      <ion-segment-button value="ducklings">
-        Ducklings
-      </ion-segment-button>
-      <ion-segment-button value="4th-segment">
-        Puppies
-      </ion-segment-button>
-      <ion-segment-button value="fifth-segment">
-        Kittens
-      </ion-segment-button>
-      <ion-segment-button value="sixth-segment">
-        Ducklings
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <button ion-button (click)="takePicture()">Take Picture</button>
-
+  <button ion-button (click)="openSelectContactModal()" style="width:100%">Select Contacts</button>
+  <ion-list *ngIf="cons[0]">
+    <ion-item *ngFor="let contact of cons">
+      {{contact}}
+    </ion-item>
+  </ion-list>
 </ion-content>

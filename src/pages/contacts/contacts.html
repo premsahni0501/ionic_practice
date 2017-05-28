@@ -36,9 +36,8 @@
     <ion-toolbar style="padding:0 15px">
       <p>{{selectedContacts.length}} contact(s) selected</p>
       <ion-buttons end>
-        <button ion-button icon-right color="primary">
+        <button ion-button icon-right color="primary" (click)="dismissWithData()">
           Select
-          <ion-icon name="send"></ion-icon>
         </button>
       </ion-buttons>
     </ion-toolbar>

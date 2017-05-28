@@ -8,9 +8,20 @@
 
 <ion-content>
   <button ion-button (click)="openSelectContactModal()" style="width:100%">Select Contacts</button>
-  <ion-list *ngIf="cons[0]">
+  <ion-list *ngIf="cons">
     <ion-item *ngFor="let contact of cons">
       {{contact}}
     </ion-item>
   </ion-list>
+  <ion-grid *ngIf="cons">
+    <ion-row>
+      <ion-col col-4 *ngFor="let contact of cons">
+        <div style="margin: 0 auto;height: 50px;display: block;background-color: aquamarine;border: 1px solid #666;width: 50px;">
+        </div>
+        <p style="text-align:center;font-weight:600;color:#666">
+          {{contact}}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

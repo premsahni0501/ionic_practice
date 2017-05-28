@@ -8,7 +8,8 @@ import { Contacts } from '../contacts/contacts';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  cons=['<i>Contact list empty<i>']
+  private cons
+
   constructor
   (
     platform: Platform,
@@ -18,13 +19,21 @@ export class HomePage {
     private viewCtrl: ViewController
   ) 
   {
-    this.navParam.get("contacts")
-    // this.cons = this.viewCtrl.getContent()
+    if(this.viewCtrl.getNavParams().get('selectedContacts') !== null){
+      this.cons = this.navParam.get('selectedContacts')
+    }
+    else{
+      this.cons=[]
+    }
+    console.log("arr:"+this.cons);
   }
 
   openSelectContactModal(){
     let sc = this.modal.create(Contacts);
-    sc.present();
+    sc.present()
+    sc.onDidDismiss(data=>{
+      this.cons = data.selectedContacts
+      console.log(this.cons)
+    })
   }
-
 }

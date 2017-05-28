@@ -15,6 +15,12 @@ export class Contacts {
     "Prasad",
     "Hari narayan",
     "Katwaru",
+    "Prem",
+    "Chand",
+    "Sugriva",
+    "Prasad",
+    "Hari narayan",
+    "Katwaru",
     "Mallah"
   ]
   constructor(
@@ -39,9 +45,14 @@ export class Contacts {
     this.navParams.data = this.selectedContacts
     console.log("B4:"+this.selectedContacts.length);
   }
-  dismissModal(){
-    let data = { 'foo': 'bar' };
-    this.viewCtrl.dismiss(this.selectedContacts);
-  }
 
+  dismissModal()
+  { 
+    this.viewCtrl.dismiss();
+  }
+  dismissWithData()
+  {
+    let data = {'selectedContacts':this.selectedContacts}
+    this.viewCtrl.dismiss(data);
+  }
 }
